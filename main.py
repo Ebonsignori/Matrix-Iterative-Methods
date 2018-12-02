@@ -1,27 +1,28 @@
 import numpy as np
+from math import sqrt
 from iterative_methods import jacobi, gauss_seidel, successive_over_relaxation, steepest_descent, conjugate_gradient
 from utility import print_results
 
-# A = np.array([
-#    [-1, 0, 0, sqrt(2)/2, 1, 0, 0, 0],
-#    [0, -1, 0, sqrt(2)/2, 0, 0, 0, 0],
-#    [0, 0, -1, 0, 0, 0, 1/2, 0],
-#    [0, 0, 0, -sqrt(2)/2, 0, -1, -1/2, 0],
-#    [0, 0, 0, 0, -1, 0, 0, 1],
-#    [0, 0, 0, 0, 0, 1, 0, 0],
-#    [0, 0, 0, -sqrt(2)/2, 0, 0, sqrt(3)/2, 0],
-#    [0, 0, 0, 0, 0, 0, sqrt(3)/2, -1]
-# ])
-#
-# b = np.array([0, 0, 0, 0, 0, 10000, 0, 0])
-
 A = np.array([
-   [4, 3, 0],
-   [3, 4, -1],
-   [0, -1, 4]
+   [-1, 0, 0, sqrt(2)/2, 1, 0, 0, 0],
+   [0, -1, 0, sqrt(2)/2, 0, 0, 0, 0],
+   [0, 0, -1, 0, 0, 0, 1/2, 0],
+   [0, 0, 0, -sqrt(2)/2, 0, -1, -1/2, 0],
+   [0, 0, 0, 0, -1, 0, 0, 1],
+   [0, 0, 0, 0, 0, 1, 0, 0],
+   [0, 0, 0, -sqrt(2)/2, 0, 0, sqrt(3)/2, 0],
+   [0, 0, 0, 0, 0, 0, sqrt(3)/2, -1]
 ])
 
-b = np.array([24, 30, -24])
+b = np.array([0, 0, 0, 0, 0, 10000, 0, 0])
+
+# A = np.array([
+#    [4, 3, 0],
+#    [3, 4, -1],
+#    [0, -1, 4]
+# ])
+#
+# b = np.array([24, 30, -24])
 
 # Get the real solution using built in numpy method and solution using 3 iterative methods within 10^-8 error
 # x_solved = np.linalg.solve(A, b) # Either this of dot product of A inv b works, but the second is more clear
@@ -29,8 +30,12 @@ x_solved = np.dot(np.linalg.inv(A), b)
 x_jac = jacobi(A, b, delta=10**-8, actual=x_solved)
 x_gauss_seidel = gauss_seidel(A, b, delta=10**-8, actual=x_solved)
 x_sor = successive_over_relaxation(A, b, w=1.25, delta=10**-8, actual=x_solved)
-x_steepest_descent = steepest_descent(A, b, delta=10**-8, actual=x_solved)
-x_conjugate_gradient = conjugate_gradient(A, b, delta=10**-8, actual=x_solved)
+try:
+    x_steepest_descent = steepest_descent(A, b, delta=10**-8, actual=x_solved)
+    x_conjugate_gradient = conjugate_gradient(A, b, delta=10**-8, actual=x_solved)
+except:
+    x_steepest_descent = ["Failed", "None"]
+    x_conjugate_gradient = ["Failed", "None"]
 
 # Print the results for each method
 print("x [Solved with built in Numpy functions]: ")

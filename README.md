@@ -1,10 +1,10 @@
 # Comparing 5 Matrix Iteration Methods
 ### Iteration Methods
-1. [Jacobi Method](https://en.wikipedia.org/wiki/Jacobi_method)
-2. [Gauss-Seidel Method](https://en.wikipedia.org/wiki/Gauss%E2%80%93Seidel_method)
-3. [SOR (Successive Over Relaxation)](https://en.wikipedia.org/wiki/Successive_over-relaxation) Method
+1. [Jacobi](https://en.wikipedia.org/wiki/Jacobi_method)
+2. [Gauss-Seidel](https://en.wikipedia.org/wiki/Gauss%E2%80%93Seidel_method)
+3. [SOR (Successive Over Relaxation)](https://en.wikipedia.org/wiki/Successive_over-relaxation)
 4. [Steepest Descent (Gradient Descent)](https://en.wikipedia.org/wiki/Gradient_descent)
-5. [Conjugate Gradient Method](https://en.wikipedia.org/wiki/Conjugate_gradient_method)
+5. [Conjugate Gradient](https://en.wikipedia.org/wiki/Conjugate_gradient_method)
 
 The code for each method can be found in [iterative_methods.py](iterative_methods.py). 
 Each function has two modes of operation that are determined by the parameters passed into the function. 
